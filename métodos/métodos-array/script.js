@@ -22,7 +22,7 @@ console.log(arr);
 arr.shift();
 console.log(arr);
 
-// como acessar o último elemento de um array
+// como acessar o último elemento de um array ---------------------------------------------------------------------------------------------------
 console.log(arr [arr.length - 1]);
 
 // isArray - verifica se é um array
