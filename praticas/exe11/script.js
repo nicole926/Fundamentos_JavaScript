@@ -1,3 +1,5 @@
+const { createElement } = require("react");
+
 console.log("===================01===================")
 // 🔥 DESAFIO 1 — Entendendo o this na prática
 // Crie um objeto carro com: marca, modelo, velocidade (começa em 0)
@@ -42,11 +44,11 @@ console.log("===================02===================");
 // <button id="botao">Clique aqui</button>
 // JS: Pegar o botão com getElementById, Quando clicar nele: mudar o texto do <h1></h1>
 
-var titulo = document.getElementsByTagName('h1');
+var titulo = document.getElementsByTagName('h1')[0];
 var botao = document.getElementById('botao');
 
 function clicou(){
-    document.getElementsByTagName('h1') == 'Você Clicou!'
+    titulo.innerText = 'Você clicou!';
 }
 clicou();
 console.log(titulo);
@@ -65,3 +67,54 @@ console.log("===================03==================");
 // 👉 Dica: createElement, appendChild
 // 💥 Extra: Limpar o input depois de adicionar,  Não deixar adicionar vazio
 
+var lista = getElementById('lista')
+var input = getElementById('input');
+var botao = getElementById('botao')
+
+botao.onclick = function(){
+    var texto = input.value; // pega o que a pessoa digitou.
+    var li = document.createElement("li"); // cria um elemento novo.
+    li.innerText = texto; // coloca o texto dentro dele.
+    lista.appendChild(li); // Colocar na tela
+}
+
+
+console.log("===================04==================");
+// 🔥 DESAFIO 4 — Objeto + lógica real
+// Crie um objeto contaBancaria com: titular, saldo
+// Métodos:
+// depositar(valor)
+// sacar(valor)
+// verSaldo()
+// 👉 Regras:
+
+// Não pode sacar mais do que tem
+// Usar this corretamente
+
+// 💥 Extra: Mostrar mensagem tipo: "Saldo insuficiente", "Depósito realizado"
+
+
+
+console.log("===================05==================");
+// 🔥 DESAFIO 5 — Misturando TUDO (esse é o mais importante)
+
+// HTML:
+// <p id="contador">0</p>
+// <button id="mais">+</button>
+// <button id="menos">-</button>
+
+// JS:
+// Crie um objeto contador com:
+// valor inicial 0
+
+//Métodos:
+// incrementar()
+// decrementar()
+// atualizarTela()
+
+// 👉 Quando clicar:
+// botão + → incrementa
+// botão - → decrementa
+// e atualiza o <p>
+
+// 💥 Aqui você vai juntar: objeto, this, DOM
