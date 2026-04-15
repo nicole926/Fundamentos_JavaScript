@@ -58,7 +58,7 @@ console.log("==========04==========");
 // Mostre a marca no console
 // Chame o método ligar
 
-carro = {
+let carro = {
     marca: "Toyota",
     modelo: "Corolla",
     ano: 2020,
