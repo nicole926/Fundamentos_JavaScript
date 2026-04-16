@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 console.log("===================01===================")
 // 🔥 DESAFIO 1 — Entendendo o this na prática
 // Crie um objeto carro com: marca, modelo, velocidade (começa em 0)
@@ -47,10 +45,9 @@ console.log("===================02===================");
 var titulo = document.getElementsByTagName('h1')[0];
 var botao = document.getElementById('botao');
 
-function clicou(){
-    titulo.innerText = 'Você clicou!';
+botao.onclick = function(){
+    titulo.innerText = 'Você clicou!'
 }
-clicou();
 console.log(titulo);
 
 console.log("===================03==================");
@@ -67,15 +64,22 @@ console.log("===================03==================");
 // 👉 Dica: createElement, appendChild
 // 💥 Extra: Limpar o input depois de adicionar,  Não deixar adicionar vazio
 
-var lista = getElementById('lista')
-var input = getElementById('input');
-var botao = getElementById('botao')
+var lista = document.getElementById('lista');
+var input = document.getElementById('input');
+var botaoAdd = document.getElementById('add');
 
-botao.onclick = function(){
+botaoAdd.onclick = function(){
     var texto = input.value; // pega o que a pessoa digitou.
+
+    if(texto.trim() === ""){
+        alert("Digite o que deseja adicionar!");
+        return
+    }
+
     var li = document.createElement("li"); // cria um elemento novo.
     li.innerText = texto; // coloca o texto dentro dele.
     lista.appendChild(li); // Colocar na tela
+    input.value = "";
 }
 
 
@@ -87,34 +91,81 @@ console.log("===================04==================");
 // sacar(valor)
 // verSaldo()
 // 👉 Regras:
-
 // Não pode sacar mais do que tem
 // Usar this corretamente
-
 // 💥 Extra: Mostrar mensagem tipo: "Saldo insuficiente", "Depósito realizado"
 
+let contaBancaria = {
+    titular: "joãozin",
+    saldo: 0,
+
+    depositar: function(valor){
+        this.saldo += valor;
+        if(valor > 0){
+            console.log("Depósito de "+valor+" realizado com sucesso!");
+        }
+        else{
+            console.log("Valor de depósito inválido!");
+        }
+    },
+    sacar: function(valor){
+        if(valor > this.saldo){
+            console.log(this.titular+" seu saldo é insuficiente para este saque...")
+        }
+        else if(valor <= 0){
+            console.log("Valor de saque inválido!");
+        }
+        else {
+            this.saldo -= valor;
+            console.log("Saque de "+valor+" realizado!");
+        }
+    },
+    verSaldo: function(){
+        return this.saldo;
+    }
+}
+
+contaBancaria.depositar(100);
+contaBancaria.sacar(20);
+console.log(contaBancaria.verSaldo());
 
 
 console.log("===================05==================");
 // 🔥 DESAFIO 5 — Misturando TUDO (esse é o mais importante)
-
 // HTML:
 // <p id="contador">0</p>
 // <button id="mais">+</button>
 // <button id="menos">-</button>
-
-// JS:
-// Crie um objeto contador com:
-// valor inicial 0
-
-//Métodos:
-// incrementar()
-// decrementar()
-// atualizarTela()
-
+// JS:Crie um objeto contador com: valor inicial 0
+//Métodos: incrementar(),decrementar(),atualizarTela()
 // 👉 Quando clicar:
 // botão + → incrementa
 // botão - → decrementa
 // e atualiza o <p>
 
-// 💥 Aqui você vai juntar: objeto, this, DOM
+var display = document.getElementById('contador');
+var botaoMais = document.getElementById('mais');
+var botaoMenos = document.getElementById('menos');
+
+let contador = {
+    valor: 0,
+    incrementar: function(){
+        this.valor += 1;
+        this.atualizarTela();
+    },
+    decrementar: function(){
+        this.valor -= 1;
+        this.atualizarTela();
+    },
+    atualizarTela: function(){
+        display.innerText = this.valor;
+    }
+}
+
+botaoMais.onclick = function(){
+    contador.incrementar();
+}
+
+botaoMenos.onclick = function(){
+    contador.decrementar();
+}
