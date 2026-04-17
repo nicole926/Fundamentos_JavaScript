@@ -169,3 +169,75 @@ botaoMais.onclick = function(){
 botaoMenos.onclick = function(){
     contador.decrementar();
 }
+
+
+console.log("===================06==================");
+// lista de tarefas
+// Cada item da lista deve: 👉 Quando clicar nele: marcar como concluído
+// 👉 Limpar lista antes de redesenhar: lista.innerHTML = "";
+// 👉 Criar item: var li = document.createElement("li");
+
+var concluido = document.getElementById('tarefa');
+var adicionarTarefa = document.getElementById('adicionar');
+var listaTarefas = document.getElementById('listaTarefas');
+
+let app = {
+    tarefas: [],
+    
+    adicionar: function(texto) {
+        if(texto.trim() === ""){
+            alert('Digite a tarefa!');
+            return;
+        }
+
+        // agora salva como objeto
+        this.tarefas.push({
+            texto: texto,
+            concluido: false
+        });
+
+        localStorage.setItem("tarefas", JSON.stringify(this.tarefas));
+
+        this.renderizar(); 
+    },
+
+    renderizar: function() {
+    listaTarefas.innerHTML = "";
+    
+    for(let i = 0; i < this.tarefas.length; i++){
+        let li = document.createElement("li");
+
+        li.innerText = this.tarefas[i].texto;
+
+        if(this.tarefas[i].concluido){
+            li.style.textDecoration = "line-through";
+        }
+
+        li.onclick = () => {
+            this.tarefas[i].concluido = !this.tarefas[i].concluido;
+
+            localStorage.setItem("tarefas", JSON.stringify(this.tarefas));
+
+            this.renderizar();
+        }
+
+        listaTarefas.appendChild(li);
+    }
+  }
+}
+
+// carregar do localStorage
+let tarefasSalvas = localStorage.getItem("tarefas");
+
+if(tarefasSalvas){
+    app.tarefas = JSON.parse(tarefasSalvas);
+}
+
+app.renderizar();
+
+// botão
+adicionarTarefa.onclick = function(){
+    var texto = concluido.value;
+    app.adicionar(texto);
+    concluido.value = "";
+}
