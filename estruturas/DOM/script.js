@@ -69,3 +69,56 @@ var el = document.createElement("span");
 el.appendChild(document.createTextNode("texto do span!"));
 console.log(el);
 container.appendChild(el);
+
+// remover elementos (removeChild)
+
+var container = document.querySelector("#container");
+var p = document.querySelector("#container p");
+container.removeChild(p);
+
+// remover o elemento em sí
+
+var subtitle = document.querySelector(".subtitle");
+subtitle.remove();
+
+// Adicionar elemento
+
+var el = document.createElement('div');
+
+el.classList = "div-criada";
+console.log(el);
+
+// inserindo elemento filho (appendChild)
+var container = document.querySelector("#container");
+container.appendChild(el);
+
+// TA ERRADO ____________________________________________
+// insertBefore - insere antes
+var el2 = document.querySelector("div");
+el2.classList = "div-before";
+var el3 = document.querySelector("#container .div-before");
+console.log(el3);
+
+container.insertBefore(el2, el3);
+// _______________________________________________________
+
+// Trocando elementos com o DOM
+var el = document.createElement('h3');
+el.classList = "testando classe";
+var texto = document.createTextNode("Este é o texto do h3");
+el.append(texto);
+console.log(el);
+
+// selecionar o elemento que quero trocar
+var title = document.querySelector('#title');
+console.log(title);
+var pai = title.parentNode; // seleciona o pai do elemento automaticamente
+pai.replaceChild(el, title);
+
+// setAttribute
+var title2 = document.querySelector("#title");
+title2.setAttribute("class", "testando-atributo");
+console.log(title);
+
+var btn = document.querySelector("#btn");
+btn.setAttribute("disabled", "disabled");
