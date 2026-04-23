@@ -92,21 +92,18 @@ console.log(el);
 var container = document.querySelector("#container");
 container.appendChild(el);
 
-// TA ERRADO ____________________________________________
 // insertBefore - insere antes
-var el2 = document.querySelector("div");
-el2.classList = "div-before";
-var el3 = document.querySelector("#container .div-before");
-console.log(el3);
-
-container.insertBefore(el2, el3);
-// _______________________________________________________
+var el2 = document.createElement("div");
+el2.classList.add("div-before");
+el2.textContent = "Sou a div antes 😎";
+var referencia = document.querySelector("#container span");
+container.insertBefore(el2, referencia);
 
 // Trocando elementos com o DOM
 var el = document.createElement('h3');
 el.classList = "testando classe";
 var texto = document.createTextNode("Este é o texto do h3");
-el.append(texto);
+el.appendChild(texto);
 console.log(el);
 
 // selecionar o elemento que quero trocar
@@ -122,3 +119,11 @@ console.log(title);
 
 var btn = document.querySelector("#btn");
 btn.setAttribute("disabled", "disabled");
+
+var subtitle = document.querySelector(".subtitle");
+subtitle.setAttribute("id", "Titulo-2");
+
+// remover atributo
+
+var lista = document.querySelector("#lista");
+lista.removeAttribute("id");

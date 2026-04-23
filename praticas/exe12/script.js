@@ -86,10 +86,71 @@ var body = document.querySelector('body');
 body.appendChild(novoH2);
 
 console.log("-=-=-=-=-=-=05-=-=-=-=-=");
-// 🧠 DESAFIO 5 — Substituindo conteúdo (innerHTML vs textContent)
-// 👉 Faça:
-// Crie um div com id box
-// Crie uma função que:
-// usando innerHTML, coloque: <strong>Texto em negrito</strong>
-// depois substitua usando textContent com o mesmo texto
-// 👉 Observe a diferença no resultado
+// 🧠 EXERCÍCIO 5 — Seleção + alteração de texto
+// 👉 Trabalha: querySelector, textContent
+// 💡 Faça:
+// Pegue o primeiro <h1> da página
+// Mude o texto para: "Aprendendo DOM na prática"
+// Pegue um <p> com id paragrafo
+// Adicione no final do texto: " (editado)"
+
+var novoH1 = document.querySelector('h1');
+novoH1.textContent = "Aprendendo DOM na prática";
+
+var novoP = document.getElementById("paragrafo");
+novoP.textContent += "(editado)";
+
+console.log("-=-=-=-=-=-=06-=-=-=-=-=");
+// 🧠 EXERCÍCIO 6 — Criando elementos
+// 👉 Trabalha: createElement, createTextNode,  appendChild
+// 💡 Faça:
+//Crie um <ul> via JavaScript
+// Crie 3 <li> com textos: "HTML", "CSS", "JavaScript"
+// Adicione tudo dentro de uma div com id container
+
+// saiu meio alterada (tentei fazer do meu jeito kkkkkkkkkkk)
+
+var ul = document.createElement('ul');
+var textos = ["HTML", "CSS", "JavaScript"];
+
+for(let i = 0; i < textos.length; i++){
+    var liFor = document.createElement('li');
+    liFor.textContent = textos[i];
+    ul.appendChild(liFor);
+}
+
+var container = document.getElementById('container');
+container.appendChild(ul);
+
+console.log("-=-=-=-=-=-=07-=-=-=-=-=");
+// 🧠 EXERCÍCIO 7 — Inserindo antes (insertBefore)
+// 👉 Trabalha: insertBefore
+// 💡 Faça:
+// Dentro de uma lista (ul), selecione todos os li
+// Crie um novo li com texto "Primeiro item"
+// Insira esse novo li antes do primeiro item da lista
+
+var li = document.createElement('li');
+var ulFrutas = document.querySelector('#ulFrutas');
+console.log(li)
+console.log(ulFrutas);
+
+li.classList.add("item-before");
+li.textContent = "Primeiro item";
+
+var referencia = document.querySelector('#ulFrutas li');
+ulFrutas.insertBefore(li, referencia);
+
+console.log("-=-=-=-=-=-=08-=-=-=-=-=");
+// 🧠 EXERCÍCIO 8 — Removendo elementos
+// 👉 Trabalha: removeChild, remove
+// 💡 Faça:
+// Remova o último item de uma lista (ul)
+// Depois selecione um elemento com classe .subtitle e remova ele completamente da página
+
+console.log(listaUl);
+var ul = document.querySelector('ul');
+listaUl.removeChild(listaUl.lastElementChild);
+
+var subtitle = document.querySelector('.subtitle');
+subtitle.remove();
