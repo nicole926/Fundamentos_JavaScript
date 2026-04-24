@@ -78,8 +78,8 @@ console.log('-=-=-=-=-=-=-=-=-=-=04-=-=-=-=-=-=-=-=-=');
 // Mude a cor para roxo
 // Coloque fundo cinza
 
-var p = document.querySelectorAll('p');
-for(let i = 0; i < p; i++){
+var p = document.querySelectorAll('.frases');
+for(let i = 0; i < p.length; i++){
     var iFor = p[i];
     iFor.style.cssText = "color: purple; background-color: grey;";
 }
@@ -96,7 +96,6 @@ console.log('-=-=-=-=-=-=-=-=-=-=05-=-=-=-=-=-=-=-=-=');
 // Quando clicar:
 // Use sua função soma ou multiplicacao
 // Mostre o resultado dentro do <p> (não só no console)
-
 
 var numero1 = document.getElementById('n1');
 var numero2 = document.getElementById('n2');
