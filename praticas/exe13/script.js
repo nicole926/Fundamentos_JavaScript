@@ -97,3 +97,35 @@ console.log('-=-=-=-=-=-=-=-=-=-=05-=-=-=-=-=-=-=-=-=');
 // Use sua função soma ou multiplicacao
 // Mostre o resultado dentro do <p> (não só no console)
 
+
+var numero1 = document.getElementById('n1');
+var numero2 = document.getElementById('n2');
+
+function exibir(num){
+    document.getElementById('contador').textContent = num;
+}
+
+function soma(a, b, cb){
+    var resultado = a + b;
+    cb(resultado);
+}
+
+function multiplicacao(a, b, cb){
+    var resultado = a * b;
+    cb(resultado);
+}
+
+document.getElementById('somar').onclick = function(){
+    console.log("Clicou somar");
+    var n1 = Number(numero1.value);
+    var n2 = Number(numero2.value);
+
+    soma(n1, n2, exibir);
+}
+
+document.getElementById('multi').onclick = function(){
+    var n1 = Number(numero1.value);
+    var n2 = Number(numero2.value);
+
+    multiplicacao(n1, n2, exibir);
+}
