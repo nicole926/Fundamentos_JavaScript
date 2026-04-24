@@ -113,7 +113,7 @@ function multiplicacao(a, b, cb){
     var resultado = a * b;
     cb(resultado);
 }
-
+// botão de somar
 document.getElementById('somar').onclick = function(){
     console.log("Clicou somar");
     var n1 = Number(numero1.value);
@@ -122,6 +122,7 @@ document.getElementById('somar').onclick = function(){
     soma(n1, n2, exibir);
 }
 
+// botão de multiplicar
 document.getElementById('multi').onclick = function(){
     var n1 = Number(numero1.value);
     var n2 = Number(numero2.value);
