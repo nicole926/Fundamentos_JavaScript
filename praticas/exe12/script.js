@@ -108,8 +108,6 @@ console.log("-=-=-=-=-=-=06-=-=-=-=-=");
 // Crie 3 <li> com textos: "HTML", "CSS", "JavaScript"
 // Adicione tudo dentro de uma div com id container
 
-// saiu meio alterada (tentei fazer do meu jeito kkkkkkkkkkk)
-
 var ul = document.createElement('ul');
 var textos = ["HTML", "CSS", "JavaScript"];
 
@@ -154,3 +152,25 @@ listaUl.removeChild(listaUl.lastElementChild);
 
 var subtitle = document.querySelector('.subtitle');
 subtitle.remove();
+
+console.log("-=-=-=-=-=-=09-=-=-=-=-=");
+// 🧠 EXERCÍCIO 5 — Atributos e classes
+// 👉 Trabalha: setAttribute, removeAttribute, classList
+// 💡 Faça:
+// Pegue um botão (#btn)
+// Adicione o atributo disabled
+// Pegue um título (h1)
+// Adicione a classe "titulo-principal"
+// Pegue uma lista (#lista)
+// Remova o atributo id
+
+var btn = document.querySelector(".btn");
+btn.setAttribute('disabled', 'disabled');
+
+var h1 = document.querySelector('h1');
+h1.classList = "titulo-principal";
+console.log(h1);
+
+var ul2 = document.querySelector('#ulFrutas2');
+ul2.removeAttribute('id');
+console.log(ul2);
