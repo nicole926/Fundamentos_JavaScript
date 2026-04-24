@@ -1,3 +1,4 @@
+
 function exibir(num){
     console.log("A operação resultou em: "+num);
 }
