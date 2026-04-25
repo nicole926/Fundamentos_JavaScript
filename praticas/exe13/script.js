@@ -134,7 +134,7 @@ function soma(a, b, cb){
 function multiplicacao(a, b, cb){
     return a * b;
 }
-
+// botão de somar
 document.getElementById('somar').onclick = function(){
     var n1 = Number(numero1.value);
     var n2 = Number(numero2.value);
@@ -153,6 +153,7 @@ document.getElementById('somar').onclick = function(){
     localStorage.setItem("historico", JSON.stringify(historico));
 }
 
+// botão de multiplicar
 document.getElementById('multi').onclick = function(){
     var n1 = Number(numero1.value);
     var n2 = Number(numero2.value);
