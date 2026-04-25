@@ -99,32 +99,74 @@ console.log('-=-=-=-=-=-=-=-=-=-=05-=-=-=-=-=-=-=-=-=');
 
 var numero1 = document.getElementById('n1');
 var numero2 = document.getElementById('n2');
+var ul = document.getElementById('historico');
+
+var historicoSalvo = JSON.parse(localStorage.getItem("historico")) || [];
+
+for(let i = 0; i < historicoSalvo.length; i++){
+    var li = document.createElement("li");
+    li.textContent = historicoSalvo[i];
+    ul.appendChild(li);
+}
 
 function exibir(num){
-    document.getElementById('contador').textContent = num;
+    var p = document.getElementById('contador');
+    p.textContent = num;
+    p.style.color = "black";
+
+    if(isNaN(num)){
+        p.textContent = "Digite apenas números válidos!";
+        p.style.color = "red";
+    }
+    else if(num <= 10){
+        p.style.color = "blue";
+    }
+    else{
+        p.style.color = "Green";
+    }
+    
 }
 
 function soma(a, b, cb){
-    var resultado = a + b;
-    cb(resultado);
+    return a + b;
 }
 
 function multiplicacao(a, b, cb){
-    var resultado = a * b;
-    cb(resultado);
+    return a * b;
 }
 
 document.getElementById('somar').onclick = function(){
-    console.log("Clicou somar");
     var n1 = Number(numero1.value);
     var n2 = Number(numero2.value);
+    var resultado = soma(n1, n2);
+    exibir(resultado);
 
-    soma(n1, n2, exibir);
+    var li = document.createElement('li');
+    li.textContent = n1 + " + " + n2 + " = " + resultado;
+    ul.appendChild(li);
+
+    var historico = JSON.parse(localStorage.getItem("historico")) || [];
+    historico.push(n1 + " + " + n2 + " = " + resultado);
+    if(historico.length > 5){
+        historico.shift();
+    }
+    localStorage.setItem("historico", JSON.stringify(historico));
 }
 
 document.getElementById('multi').onclick = function(){
     var n1 = Number(numero1.value);
     var n2 = Number(numero2.value);
+    var resultado = multiplicacao(n1, n2);
+    exibir(resultado);
 
-    multiplicacao(n1, n2, exibir);
+    var li = document.createElement('li');
+    li.textContent = n1 + " x " + n2 + " = " + resultado;
+    ul.appendChild(li);
+
+    var historico = JSON.parse(localStorage.getItem("historico")) || [];
+    historico.push(n1 + " x " + n2 + " = " + resultado);
+    if(historico.length > 5){
+        historico.shift();
+    }
+    localStorage.setItem("historico", JSON.stringify(historico));
 }
