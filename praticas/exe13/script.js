@@ -101,6 +101,8 @@ var numero1 = document.getElementById('n1');
 var numero2 = document.getElementById('n2');
 var ul = document.getElementById('historico');
 
+// HISTÒRICO
+// salvar no localStorage
 var historicoSalvo = JSON.parse(localStorage.getItem("historico")) || [];
 
 for(let i = 0; i < historicoSalvo.length; i++){
@@ -119,7 +121,7 @@ function exibir(num){
         p.style.color = "red";
     }
     else if(num <= 10){
-        p.style.color = "blue";
+        p.style.color = "purple";
     }
     else{
         p.style.color = "Green";
