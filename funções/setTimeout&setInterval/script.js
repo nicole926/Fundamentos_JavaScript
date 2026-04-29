@@ -3,6 +3,7 @@
 // segundo parâmetro é o intervalo em milisegundos (1s é 1000 ms)
 // esse tempo de espera se chama: chamada assíncrona.
 
+// setTimeout
 console.log("antes do setTimeout");
 
 setTimeout(function(){
