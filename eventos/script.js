@@ -58,3 +58,8 @@ subtitle.addEventListener("mouseout", function(){
     var legenda = document.querySelector('#legenda');
     legenda.classList.add("hide");
 });
+
+// keydown
+document.addEventListener("keydown", function(event){
+    console.log(event.key);
+});
