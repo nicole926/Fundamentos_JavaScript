@@ -1,6 +1,7 @@
 const url = "https://jsonplaceholder.typicode.com/posts";
 
 const loadingElement = document.querySelector('#loading');
+const commentsLoading = document.querySelector('#comments-loading');
 const postsContainer = document.querySelector('#posts-container');
 
 const postPage = document.querySelector("#post");
@@ -21,23 +22,47 @@ async function getAllPosts(){
 
     const response = await fetch(url);
     const data = await response.json();
+    const firstTenData = data.slice(0, 10);
+    console.log(firstTenData);
 
     loadingElement.classList.add("hide");
 
-    data.map((post) => {
+    firstTenData.map(async (post) => {
+        // pegando o nome do id
+        const responseUser = await fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`);
+        const userData = await responseUser.json();
+
         const div = document.createElement("div");
         const title = document.createElement("h2");
         const body = document.createElement("p");
         const link = document.createElement("a");
+        const author = document.createElement("p"); 
+        const btnRemover = document.createElement("button");
 
         title.innerText = post.title;
         body.innerText = post.body;
         link.innerText = "Ler";
         link.setAttribute("href", `post.html?id=${post.id}`);
+        author.innerHTML = `Author: ${userData.name}`;
+
+        btnRemover.id = "btnRemover";
+        btnRemover.innerText = "Excluir";
+
+        btnRemover.addEventListener("click", async () => {
+            const confirmed = confirm("Deseja excluir esse comentário?")
+            if(confirmed){
+                await fetch(`${url}/${post.id}`, {
+                method: "DELETE"
+                });
+                div.remove();
+            }
+        });
 
         div.appendChild(title);
         div.appendChild(body);
+        div.appendChild(author);
         div.appendChild(link);
+        div.appendChild(btnRemover);
 
         postsContainer.appendChild(div);
     });
@@ -57,6 +82,14 @@ async function getPost(id) {
     if(postPage){
     postPage.classList.remove("hide");
     };
+
+    try {
+        if(commentsLoading){
+            commentsLoading.classList.add("hide");
+        }
+    } catch (error) {
+        console.log(error);
+    }
 
     const title = document.createElement("h1");
     const body = document.createElement("p");

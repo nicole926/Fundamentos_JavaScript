@@ -44,3 +44,13 @@ form label {
 form input, form textarea {
     padding: 5px;
 }
+
+#btnRemover {
+    color: #e6feff;
+    background-color: #de062d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    text-decoration: none;
+    border: none;
+}
