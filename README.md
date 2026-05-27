@@ -1,1 +1,1 @@
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="40">
+<img src="https://skillicons.dev/icons?i=js&theme=dark" width="50"/>
